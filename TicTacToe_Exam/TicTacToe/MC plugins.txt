@@ -1,0 +1,17 @@
+
+	Plugins for Minecraft server
+		1. MCMMO (Cmon, you know what this is)
+		2. Safari net (Pokémon)
+		3. Mobs with better loot
+		4. Vault (Plugin management)
+		5. bPermissions / PermissionsEx (Permission management)
+		6. EssentialsX (Basic commands)
+		7. DynMap (Google maps for minecraft)
+		8. Multiverse (Surival and Creative)
+		9. DiscordSRV (Discord chat and Minecraft chat synced)
+		10. WorldEdit (For creative)
+		11. LaggRemover (Clears entities)
+		12. SilkSpawners (Mine spawners with silk touch)
+		13. AdminFun (More commands)
+		14. Scoreboard Stats (For flexing)
+		15. 
