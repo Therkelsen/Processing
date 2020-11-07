@@ -7,7 +7,7 @@
     float d = 75;
     float r = d/2;
   
-    float moveSpd = random(1000, 1000);
+    float moveSpd = random(5, 15);
   
     int HP = 100;
   

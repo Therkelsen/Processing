@@ -20,7 +20,7 @@
   MenuElements menu = new MenuElements();
   
   //---------- Variables needed for the main game ----------//
-  int initialPumpkins = int(random(1000, 1000));
+  int initialPumpkins = int(random(10, 25));
   int minimumPumpkins = 10;
   int amountToSpawn = int(random(1, 5));
   

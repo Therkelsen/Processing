@@ -8,16 +8,16 @@ class Skeleton {
   float d = 75;
   float r = d/2;
 
-  float moveSpd = 7;
+  float moveSpd = 15;
 
   int HP = 100;
 
   boolean dead = false;
   int score = 0;
-  
+
   //PImage sprite;
 
-    Skeleton() {
+  Skeleton() {
     // Constructor for the class
     location = new PVector(width/2, height/2);
     //sprite = loadImage("skeleton.jpg");
@@ -52,7 +52,7 @@ class Skeleton {
       location.y = height;
     }
   }
-  
+
   void checkCollision() {
     for (int i = 0; i < pumpkins.size(); i++) {
       Pumpkin pump = pumpkins.get(i);
@@ -61,6 +61,9 @@ class Skeleton {
         pumpkins.remove(i);
         munch.play();
         score++;
+        if (moveSpd <= 50) {
+          moveSpd *= 1.01;
+        }
       }
     }
   }
@@ -72,14 +75,14 @@ class Skeleton {
     textAlign(LEFT);
     textSize(32);
     text("Pumpkins eaten: " + score, 25, height - 30);
-    
-    if (score%25 == 0 && score != 0){
-    strokeWeight(1);
-    stroke(0);
-    fill(255);
-    textAlign(CENTER,CENTER);
-    textSize(48);
-    text(score + " pumpkins!", width/2, height/2);
+
+    if (score%25 == 0 && score != 0) {
+      strokeWeight(1);
+      stroke(0);
+      fill(255);
+      textAlign(CENTER, CENTER);
+      textSize(48);
+      text(score + " pumpkins!", width/2, height/2);
     }
   }
 }
