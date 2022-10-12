@@ -7,11 +7,9 @@
     float d = 75;
     float r = d/2;
   
-    float moveSpd = random(5, 15);
+    float moveSpd = random(5, 10);
   
     int HP = 100;
-  
-    boolean dead = false;
   
     Pumpkin() {
       // Constructor for the class
@@ -28,10 +26,12 @@
   
     void checkEdges() {
       if (location.x > width-r || location.x < 0+r) {
-        direction.x = -direction.x*0.9;
+        direction.x *= -1;
+        direction.y *= random(-1.5, 1.5);
       }
       if (location.y > height-r || location.y < 0+r) {
-        direction.y = -direction.y*1.1;
+        direction.x *= random(-1.5, 1.5);
+        direction.y *= -1;
       }
     }
   }

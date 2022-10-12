@@ -1,7 +1,7 @@
 
 class Skeleton {
 
-  boolean keys[] = new boolean[128];
+  boolean keys[] = new boolean[133];
 
   PVector location;
 
@@ -14,6 +14,9 @@ class Skeleton {
 
   boolean dead = false;
   int score = 0;
+  
+  long t = System.currentTimeMillis();
+  long end = t+15000;
 
   //PImage sprite;
 
@@ -24,32 +27,31 @@ class Skeleton {
   }
 
   void update() {
-
-    if (keys['w']) {
+    if (keys['w'] || keys[129]) {
       location.y = location.y - moveSpd;
     }
-    if (keys['a']) {
+    if (keys['a'] || keys[130]) {
       location.x = location.x - moveSpd;
     }
-    if (keys['s']) {
+    if (keys['s'] || keys[131]) {
       location.y = location.y + moveSpd;
     }
-    if (keys['d']) {
+    if (keys['d'] || keys[132]) {
       location.x = location.x + moveSpd;
     }
   }
 
   void checkEdges() {
     //Check if the ball is near the edges
-    if (location.x > width) {
-      location.x = 0;
-    } else if (location.x < 0) {  
-      location.x = width;
+    if (location.x > width - r) {
+      location.x = width - r;
+    } else if (location.x < 0 + r) {  
+      location.x = 0 + r;
     }
-    if (location.y > height) {
-      location.y = 0;
-    } else if (location.y < 0) {   
-      location.y = height;
+    if (location.y > height - r) {
+      location.y = height - r;
+    } else if (location.y < 0 + r) {   
+      location.y = 0 + r;
     }
   }
 
@@ -57,13 +59,9 @@ class Skeleton {
     for (int i = 0; i < pumpkins.size(); i++) {
       Pumpkin pump = pumpkins.get(i);
       if (dist(location.x, location.y, pump.location.x, pump.location.y) < r + pump.r) {
-        pump.dead = true;
         pumpkins.remove(i);
         munch.play();
         score++;
-        if (moveSpd <= 50) {
-          moveSpd *= 1.01;
-        }
       }
     }
   }
@@ -75,14 +73,5 @@ class Skeleton {
     textAlign(LEFT);
     textSize(32);
     text("Pumpkins eaten: " + score, 25, height - 30);
-
-    if (score%25 == 0 && score != 0) {
-      strokeWeight(1);
-      stroke(0);
-      fill(255);
-      textAlign(CENTER, CENTER);
-      textSize(48);
-      text(score + " pumpkins!", width/2, height/2);
-    }
   }
 }

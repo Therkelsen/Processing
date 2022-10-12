@@ -25,29 +25,28 @@
   int amountToSpawn = int(random(1, 5));
   
   //---------- Variables needed for the main game ----------//
-  int gameWidth = 1280;
-  int gameHeight = 900;
   boolean atStartup = true;
   boolean startScreenMousePressed = false;
   
-  void settings() {
-    //---------- Set the canvas size ----------//
-    size(gameWidth, gameHeight);
-  }
+  //void settings() {
+  //  //---------- Set the canvas size ----------//
+  //  size(gameWidth, gameHeight);
+  //}
   
   void setup() {
     //---------- Everything that only needs to be run once goes in here ----------//
+    size(1280, 720);
     smooth();
     background(0);
     frameRate(120);
   
     //---------- Make the background music work and turn the volume down to 10% ----------//
     soundtrack = new SoundFile(this, path1);
-    soundtrack.amp(0.1);
+    soundtrack.amp(0.07);
   
     //---------- Make the munch sound work and turn the volume down to 10% ----------//
     munch = new SoundFile(this, path2);
-    munch.amp(0.1);
+    munch.amp(0.07);
   
     //---------- Call the constructors for the needed classes ----------//
     player = new Skeleton();
@@ -79,6 +78,18 @@
   void keyPressed() {
     if (key != CODED) {
       player.keys[key] = true;
+    } else if (keyCode == UP) {
+      player.keys[129] = true;
+      System.out.println("UP_ARROW");
+    } else if (keyCode == LEFT) {
+      player.keys[130] = true;
+      System.out.println("LEFT_ARROW");
+    } else if (keyCode == DOWN) {
+      player.keys[131] = true;
+      System.out.println("DOWN_ARROW");
+    } else if (keyCode == RIGHT) {
+      player.keys[132] = true;
+      System.out.println("RIGHT_ARROW");
     }
   }
   
@@ -86,6 +97,15 @@
   void keyReleased() {
     if (key != CODED) {
       player.keys[key] = false;
+      System.out.println(player.keys[key]);
+    } else if (keyCode == UP) {
+      player.keys[129] = false;
+    } else if (keyCode == LEFT) {
+      player.keys[130] = false;
+    } else if (keyCode == DOWN) {
+      player.keys[131] = false;
+    } else if (keyCode == RIGHT) {
+      player.keys[132] = false;
     }
   }
   
@@ -104,7 +124,7 @@
     player.checkEdges();
     player.checkCollision();
     image(skeletonSprite, player.location.x, player.location.y, player.d, player.d);
-  
+    
     for (int i = 0; i < pumpkins.size(); i++) {
       Pumpkin pump = pumpkins.get(i);
       pump.update();
@@ -113,7 +133,10 @@
     }
   
     if (pumpkins.size() < minimumPumpkins) {
-      pumpkins.add(new Pumpkin());
+      amountToSpawn = int(random(1, 5));
+      for (int i = 0; i < amountToSpawn; i++) {
+        pumpkins.add(new Pumpkin());
+      }
     }
   }
   
@@ -123,3 +146,4 @@
       soundStarted = true;
     }
   }
+  

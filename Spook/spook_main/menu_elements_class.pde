@@ -64,7 +64,6 @@
     }
   
     void interaction() {
-  
       if (mouseX >= button1PosX - buttonWidth/2 && mouseX <= button1PosX + buttonWidth/2) {
         if (mouseY >= button1PosY - buttonHeight/2 && mouseY <= button1PosY + buttonHeight/2) {
           mouseOverButton1 = true;
