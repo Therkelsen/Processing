@@ -69,8 +69,8 @@ void draw() {
   textAlign(CENTER, CENTER);
 
   drawText(hr, -120, 0, 120, 100, 100, 3);
-  drawText(mn, -20, 0, 260, 75, 100, 3);
-  drawText(sc, 110, 0, 28, 100, 100, 3);
+  drawText(mn, 0, 0, 260, 75, 100, 3);
+  drawText(sc, 120, 0, 28, 100, 100, 3);
 
   strokeWeight(strokeWeight);
   noFill();
